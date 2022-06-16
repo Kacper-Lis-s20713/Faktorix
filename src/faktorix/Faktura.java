@@ -34,8 +34,7 @@ public class Faktura implements Serializable {
         ekstensja.put(numer, this);
     }
 
-
-
+    // Asocjacja faktury z Księgową i Firmą
     public void setKsiegowa(Ksiegowa nowaksiegowa) {
         if (ksiegowa != null) {
             ksiegowa.usunFakture(this);
@@ -51,7 +50,7 @@ public class Faktura implements Serializable {
         firma = nowafirma;
         firma.addFaktura(this);
     }
-
+    // TO-DO sprawdzić, czy takie usuwanie wystarczy - usuwanie z ekstensji
     public void usunKsiegowa(){
         ksiegowa = null;
     }
@@ -60,6 +59,7 @@ public class Faktura implements Serializable {
         firma = null;
     }
 
+    // Zarządzanie ekstensją
     public static void zapiszEkstensje(ObjectOutputStream stream) throws IOException {
         stream.writeObject(ekstensja);
     }
