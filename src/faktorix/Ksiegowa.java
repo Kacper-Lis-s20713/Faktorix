@@ -9,7 +9,7 @@ public class Ksiegowa extends Osoba{
         ZWYKLA, KADROWA;
     }
 
-    private List<RodzajKsiegowej> rodzajKsiegowej; //TO-DO: [1..2] co najmniej jeden rodzaj księgowej [zwykla, zwykla-kadrowa, kadrowa]
+    private List<RodzajKsiegowej> rodzajKsiegowej; // TODO: [1..2] co najmniej jeden rodzaj księgowej [zwykla, zwykla-kadrowa, kadrowa]
     private List<Faktura> faktury = new ArrayList<>();
     private List<ObslugaFirmy> obslugiFirmy = new ArrayList<>();
 
@@ -64,5 +64,5 @@ public class Ksiegowa extends Osoba{
         return this.getLogin();
     }
 
-    // Tutaj dużo method (biznesowych)
+    // TODO: Tutaj dużo method (biznesowych)
 }

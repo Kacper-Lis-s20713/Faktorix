@@ -12,7 +12,7 @@ public class Faktura implements Serializable {
         KARTA, GOTOWKA, PRZELEW;
     }
 
-    private String numer; //{unique} TO-DO
+    private String numer; //{unique} TODO
     private MetodaPlatnosci metodaPlatnosci;
 
     // Połączenia asocjacji
@@ -25,7 +25,7 @@ public class Faktura implements Serializable {
     public Faktura(String numer, MetodaPlatnosci metodaPlatnosci, Ksiegowa ksiegowa, Firma firma) {
         this.numer = numer;
         this.metodaPlatnosci = metodaPlatnosci;
-        // TO-DO: ksiegowa nie moze byc null
+        // TODO: ksiegowa nie moze byc null
         this.ksiegowa = ksiegowa;
         ksiegowa.addFaktura(this);
 
@@ -50,7 +50,7 @@ public class Faktura implements Serializable {
         firma = nowafirma;
         firma.addFaktura(this);
     }
-    // TO-DO sprawdzić, czy takie usuwanie wystarczy - usuwanie z ekstensji
+    // TODO sprawdzić, czy takie usuwanie wystarczy - usuwanie z ekstensji
     public void usunKsiegowa(){
         ksiegowa = null;
     }
