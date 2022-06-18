@@ -10,20 +10,25 @@ import java.util.TreeMap;
 import faktorix.Ksiegowa.*;
 import faktorix.Faktura.*;
 
+import static javafx.application.Application.launch;
+
+/*
+TODO
+- Muszę pododawć odpowiednie metody i pola do klas gdzie to pominąłem
+  ale tylko to co przyda mi się w implementacji GUI
+  głównie chodzi o takie metody biznesowe bo techincznie
+  powinno wszystko być.
+ */
+
 //GUI method
 public class Main{
-//    @Override
-//    public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("gui/sample.fxml"));
-//        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
-//    }
-
     public static void main(String[] args) {
-//        launch(args);
 
-        final String extentFile = "ekstensja.ser";
+
+
+
+
+//        final String extentFile = "ekstensja.ser";
 
 //        try {
 //            var in = new ObjectInputStream(new FileInputStream(extentFile));
@@ -36,8 +41,8 @@ public class Main{
 //            e.printStackTrace();
 //        }
 
-        System.out.println("Implementacja MAS");
-        RodzajKsiegowej[] rodzajKsiegowej = {RodzajKsiegowej.ZWYKLA};
+//        System.out.println("Implementacja MAS");
+//        RodzajKsiegowej[] rodzajKsiegowej = {RodzajKsiegowej.ZWYKLA};
 //        Ksiegowa ksiegowa1 = new Ksiegowa("Anna1", "pass", List.of(rodzajKsiegowej));
 //        Ksiegowa ksiegowa2 = new Ksiegowa("Basia1", "haslo_basia", List.of(rodzajKsiegowej));
 //        Firma firma1 = new Firma(Firma.RodzajFirmy.ZOO, new DaneFirmy("123456789", "Faktorix", "adres 123"), "12309845621");
@@ -52,7 +57,7 @@ public class Main{
 
 
 
-        System.out.println("-------sprawdzenie asocjaci---------");
+//        System.out.println("-------sprawdzenie asocjaci---------");
 //        System.out.println("Faktury anii: " + ksiegowa1.getFaktury());
 //        System.out.println("Faktury basii: " + ksiegowa2.getFaktury());
 //        System.out.println("Faktury firmy faktorix:" + firma1.getFaktury());
@@ -81,7 +86,7 @@ public class Main{
 //        System.out.println(firma1.getObslugiFirmy());
 //        System.out.println(ObslugaFirmy.getEkstensja());
 //        System.out.println(ObslugaFirmy.getEkstensja().get(0).getKsiegowa().getObslugiFirmy().get(0).getFirma());
-        System.out.println("----------sprawdzenie ekstensji--------");
+//        System.out.println("----------sprawdzenie ekstensji--------");
 //        System.out.println(Ksiegowa.getEkstensja());
 //        System.out.println(Faktura.getEkstensja());
 //        System.out.println(Firma.getEkstensja().get(0).getFaktury());

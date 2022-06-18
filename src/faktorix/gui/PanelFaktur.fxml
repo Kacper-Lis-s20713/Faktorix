@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faktorix.gui.PanelFakturController">
+   <children>
+      <Label fx:id="firmaNapis" prefHeight="17.0" prefWidth="600.0" text="Faktury firmy: ABC">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </Label>
+      <TableView fx:id="tabelaFaktur" layoutY="65.0" prefHeight="242.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="numer" prefWidth="107.0" text="Numer Faktury" />
+          <TableColumn fx:id="wystawca" prefWidth="118.0" text="Wystawca" />
+            <TableColumn fx:id="netto" minWidth="0.0" prefWidth="68.0" text="Netto" />
+            <TableColumn fx:id="brutto" minWidth="7.0" prefWidth="116.0" text="Brutto" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="wroc" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" onAction="#wroc" text="Wróć">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <HBox alignment="CENTER_RIGHT" layoutX="302.0" layoutY="346.0" prefHeight="40.0" prefWidth="284.0" spacing="25.0">
+         <children>
+            <Button fx:id="duplikuj" mnemonicParsing="false" onAction="#duplikuj" text="Duplikuj">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="usun" mnemonicParsing="false" onAction="#usun" text="Usuń">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="dodaj" mnemonicParsing="false" onAction="#dodaj" text="Dodaj">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

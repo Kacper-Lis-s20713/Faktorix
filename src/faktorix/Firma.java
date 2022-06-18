@@ -21,6 +21,7 @@ public class Firma implements Serializable {
     private List<ObslugaFirmy> obslugiFirmy = new ArrayList<>();
     private Map<String, Pracownik> pracownicy = new TreeMap<>();
 
+    //TODO NIP ma określoną długość oraz same cyfry
     public Firma(RodzajFirmy rodzajFirmy, DaneFirmy daneFirmy, String numerRachunku) {
         this.rodzajFirmy = rodzajFirmy;
         this.daneFirmy = daneFirmy;

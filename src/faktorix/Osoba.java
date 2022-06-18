@@ -11,7 +11,7 @@ import java.util.Set;
 
 public abstract class Osoba implements Serializable {
     private String login; //{Unique} TODO
-    private String haslo;
+    private String haslo; // TODO - co najmniej 8 znaków i cyfra
     private Biuro biuro;
     private static Map<String, Osoba> ekstensja = new HashMap<>();
     private static Set<RolaSystemowa> wszystkieRole = new HashSet<>();
@@ -64,6 +64,10 @@ public abstract class Osoba implements Serializable {
 
     public static Map<String, Osoba> getEkstensja(){
         return ekstensja;
+    }
+
+    public static Osoba getOsoba(String login) {
+        return ekstensja.get(login);
     }
 
     // gettery i settery

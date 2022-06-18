@@ -13,6 +13,7 @@ public class Ksiegowa extends Osoba{
     private List<Faktura> faktury = new ArrayList<>();
     private List<ObslugaFirmy> obslugiFirmy = new ArrayList<>();
 
+    // TODO nie może być sytuacji w której lista rodzajów księgowej jest pusta
     public Ksiegowa(String login, String haslo, List<RodzajKsiegowej> rodzajKsiegowej) {
         super(login, haslo);
         this.rodzajKsiegowej = rodzajKsiegowej;

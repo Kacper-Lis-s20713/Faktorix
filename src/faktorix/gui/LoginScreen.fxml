@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faktorix.gui.LoginScreenController">
+   <children>
+      <ListView fx:id="usersTable" layoutX="63.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="loginButton" layoutX="391.0" layoutY="175.0" mnemonicParsing="false" onAction="#login" text="Zaloguj">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
