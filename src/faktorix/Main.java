@@ -50,7 +50,7 @@ public class Main{
 //        Faktura faktura1 = new Faktura("WA/2005", MetodaPlatnosci.KARTA, ksiegowa1, firma1);
 //        Faktura faktura2 = new Faktura("WA/2001", MetodaPlatnosci.PRZELEW, ksiegowa2, firma1);
 //        Faktura faktura3 = new Faktura("WA/2000", MetodaPlatnosci.GOTOWKA, ksiegowa1, firma2);
-//
+
 //        ObslugaFirmy obslugaFirmy1 = new ObslugaFirmy(
 //                LocalDateTime.parse("2022-06-20T10:00"), LocalDateTime.parse("2022-06-20T11:00"),
 //                ksiegowa1, firma1);

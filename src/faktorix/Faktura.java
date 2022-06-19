@@ -4,7 +4,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Faktura implements Serializable {
@@ -14,17 +18,21 @@ public class Faktura implements Serializable {
 
     private String numer; //{unique} TODO
     private MetodaPlatnosci metodaPlatnosci;
+    private List<Pozycja> pozycje = new ArrayList<>();
 
     // Połączenia asocjacji
     private Ksiegowa ksiegowa; // Nie ustawiam null, ponieważ zakładam, że faktura nie może powstać bez księgowej
     private Firma firma;
+    private Firma wystawca;
 
     // Ekstensja Klasy
     private static Map<String, Faktura> ekstensja = new HashMap<>();
 
-    public Faktura(String numer, MetodaPlatnosci metodaPlatnosci, Ksiegowa ksiegowa, Firma firma) {
+    public Faktura(String numer, MetodaPlatnosci metodaPlatnosci, Ksiegowa ksiegowa, Firma firma, List<Pozycja> pozycje, Firma wystawca) {
         this.numer = numer;
         this.metodaPlatnosci = metodaPlatnosci;
+        this.pozycje = pozycje;
+        this.wystawca = wystawca;
         // TODO: ksiegowa nie moze byc null
         this.ksiegowa = ksiegowa;
         ksiegowa.addFaktura(this);
@@ -72,12 +80,48 @@ public class Faktura implements Serializable {
         return ekstensja;
     }
 
+    // gettery i settery
     public Ksiegowa getKsiegowa() {
         return ksiegowa;
     }
 
     public Firma getFirma(){
         return firma;
+    }
+
+    public String getNumer(){
+        return numer;
+    }
+
+    public BigDecimal getNetto(){
+        BigDecimal netto = new BigDecimal(0);
+        for (Pozycja pozycja : pozycje) {
+            pozycja.getNetto();
+            netto = netto.add(pozycja.getNetto());
+        }
+        return netto;
+    }
+
+    public BigDecimal getBrutto(){
+        BigDecimal brutto = new BigDecimal(0);
+        for (Pozycja pozycja : pozycje) {
+            pozycja.getNetto();
+            brutto = brutto.add(pozycja.getBrutto());
+        }
+        return brutto;
+    }
+
+    public Firma getWystawca(){
+        return wystawca;
+    }
+    public void addPozycja(Pozycja pozycja){
+        pozycje.add(pozycja);
+    }
+
+    public void usunPozycja(Pozycja pozycja){
+        if(pozycje.contains(pozycja)){
+            pozycje.remove(pozycja);
+        }
     }
 
     @Override

@@ -60,6 +60,15 @@ public class Ksiegowa extends Osoba{
         return faktury;
     }
 
+    public List<Firma> getFirmy() {
+        List<Firma> firmy = new ArrayList<>();
+        for (ObslugaFirmy obsluga : obslugiFirmy) {
+            if (!firmy.contains(obsluga.getFirma())) {
+                firmy.add(obsluga.getFirma());
+            }
+        }
+        return firmy;
+    }
     @Override
     public String toString() {
         return this.getLogin();

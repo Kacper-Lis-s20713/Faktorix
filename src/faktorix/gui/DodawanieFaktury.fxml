@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faktorix.gui.DodawanieFakturyController">
    <children>
       <Label alignment="CENTER" prefHeight="35.0" prefWidth="600.0" text="Formularz dodawania faktury">
@@ -54,12 +53,12 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <TableView layoutY="281.0" prefHeight="317.0" prefWidth="600.0">
+      <TableView fx:id="tabelaPozycji" layoutY="281.0" prefHeight="317.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Nazwa" />
-          <TableColumn prefWidth="75.0" text="Podatek" />
-            <TableColumn prefWidth="75.0" text="Netto" />
-            <TableColumn prefWidth="75.0" text="Brutto" />
+          <TableColumn fx:id="nazwa" prefWidth="75.0" text="Nazwa" />
+          <TableColumn fx:id="podatek" prefWidth="75.0" text="Podatek" />
+            <TableColumn fx:id="netto" prefWidth="75.0" text="Netto" />
+            <TableColumn fx:id="brutto" prefWidth="75.0" text="Brutto" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -70,12 +69,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="dodajFakture" layoutX="498.0" layoutY="711.0" mnemonicParsing="false" onAction="#dodajFakture" text="Dodaj fakturę" />
-      <Button fx:id="anuluj" layoutX="419.0" layoutY="711.0" mnemonicParsing="false" onAction="#anuluj" text="Anuluj" />
       <Button fx:id="usunPozycje" layoutX="71.0" layoutY="619.0" mnemonicParsing="false" onAction="#usunPozycje" text="-">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="dodajFakture" layoutX="498.0" layoutY="711.0" mnemonicParsing="false" onAction="#dodajFakture" text="Dodaj fakturę" />
+      <Button fx:id="anuluj" layoutX="419.0" layoutY="711.0" mnemonicParsing="false" onAction="#anuluj" text="Anuluj" />
    </children>
 </AnchorPane>
