@@ -84,7 +84,6 @@ public class DodawanieFakturyController {
     }
 
     public void dodajPozycje(ActionEvent event) throws IOException{
-        // TODO wyświetl okno dodawania pozycji
         this.aktualizujZmienne();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DodawaniePozycji.fxml"));
         root = loader.load();
@@ -98,6 +97,7 @@ public class DodawanieFakturyController {
 
     public void dodajNowaPozycja(Pozycja pozycja){
         pozycje.add(pozycja);
+        danePozycje.clear();
         danePozycje.addAll(pozycje);
         tabelaPozycji.setItems(danePozycje);
     }
@@ -128,6 +128,13 @@ public class DodawanieFakturyController {
 
     public void usunPozycje(ActionEvent event) {
         // TODO usunięcie pozycji z faktury i aktualizacja tabeli pozycji
+        Pozycja pozycjaDoUsuniecia = tabelaPozycji.getSelectionModel().getSelectedItem();
+        if(pozycjaDoUsuniecia != null){
+            pozycje.remove(pozycjaDoUsuniecia);
+            danePozycje.clear();
+            danePozycje.addAll(pozycje);
+            tabelaPozycji.setItems(danePozycje);
+        }
     }
 
     public void ustawKontekst(Firma firma, Ksiegowa ksiegowa) {
@@ -147,5 +154,9 @@ public class DodawanieFakturyController {
         numer.setText(numerFaktury);
         dataWystawienia.setValue(wystawienieData);
         dataPlatnosci.setValue(platnoscData);
+
+        danePozycje.clear();
+        danePozycje.addAll(pozycje);
+        tabelaPozycji.setItems(danePozycje);
     }
 }

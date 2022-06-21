@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -33,11 +34,11 @@ public class DodawaniePozycjiController {
     @FXML
     private TextField netto;
     @FXML
-    private TextField brutto;
-    @FXML
     private Button anuluj;
     @FXML
     private Button dodaj;
+    @FXML
+    private Label error;
 
     private Firma firma;
     private Ksiegowa ksiegowa;
@@ -59,7 +60,6 @@ public class DodawaniePozycjiController {
     }
 
     public void anuluj(ActionEvent event) throws IOException {
-        // TODO zamknij okienko i anuluj dodawanie pozycji
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DodawanieFaktury.fxml"));
         root = loader.load();
         DodawanieFakturyController dodawanieFakturyController = loader.getController();
@@ -70,10 +70,43 @@ public class DodawaniePozycjiController {
         stage.show();
     }
 
-    public void dodaj(ActionEvent event) {
-        // TODO zweryfikuj dane, dodaj pozycjię, zamknij okienko i zaktualizuj tablę pozycji
+    public void dodaj(ActionEvent event) throws IOException {
+        // TODO można jescze nad tym coś pomyśleć
+        // Weryfikacja danych i wyświetlanie błędów
+        error.setText(" ");
+        try{
+            nazwaPozycji = nazwa.getText();
+            nazwaPozycji = nazwaPozycji.trim();
+            if(nazwaPozycji.isEmpty()){
+                throw new Exception("Musisz podać nazwę");
+            }
+            if(vat.getValue() == null){
+                throw new Exception("Musisz wybrać stawkę VAT");
+            }else{
+                stawkaVAT = Double.parseDouble(String.valueOf(vat.getValue()));
+            }
+            try{
+                nettoPozycja = new BigDecimal(netto.getText().trim().replace(",", "."));
+            }catch (NumberFormatException e){
+                throw new Exception("Błędny format kwoty netto");
+            }
 
-        Pozycja pozycja = new Pozycja(nazwaPozycji, stawkaVAT, nettoPozycja);
+            // Tworzenie pozycji
+            Pozycja pozycja = new Pozycja(nazwaPozycji, stawkaVAT, nettoPozycja);
+
+            // Wysyłanie danych do wcześniejszego widoku. Wyświetlanie okna dodawanie faktury
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DodawanieFaktury.fxml"));
+            root = loader.load();
+            DodawanieFakturyController dodawanieFakturyController = loader.getController();
+            dodawanieFakturyController.ustawKontekst(ksiegowa, firma, pozycje, numerFaktury, wystawienieData, platnoscData, firmaWystawca);
+            dodawanieFakturyController.dodajNowaPozycja(pozycja);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch(Exception e){
+            error.setText(e.getMessage());
+        }
     }
 
     public void ustawDane(Ksiegowa ksiegowa, Firma firma, List<Pozycja> pozycje, String numerFaktury, LocalDate dataWystawienia, LocalDate dataPlatnosci, Firma wystawcaFirma){

@@ -12,14 +12,6 @@ import faktorix.Faktura.*;
 
 import static javafx.application.Application.launch;
 
-/*
-TODO
-- Muszę pododawć odpowiednie metody i pola do klas gdzie to pominąłem
-  ale tylko to co przyda mi się w implementacji GUI
-  głównie chodzi o takie metody biznesowe bo techincznie
-  powinno wszystko być.
- */
-
 //GUI method
 public class Main{
     public static void main(String[] args) {
