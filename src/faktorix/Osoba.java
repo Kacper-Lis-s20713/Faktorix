@@ -4,26 +4,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class Osoba implements Serializable {
-    private String login; //{Unique} TODO
-    private String haslo; // TODO - co najmniej 8 znaków i cyfra
+    private String login;
+    private String haslo;
     private Biuro biuro;
     private static Map<String, Osoba> ekstensja = new HashMap<>();
     private static Set<RolaSystemowa> wszystkieRole = new HashSet<>();
     private RolaSystemowa rolaSystemowa;
+    private static List<String> loginy;
 
-    public Osoba(String login, String haslo) {
+    public Osoba(String login, String haslo) throws Exception {
+        if (loginy.contains(login)){
+            throw new Exception("Takie login już istnieje");
+        }
         this.login = login;
         this.haslo = haslo;
         ekstensja.put(login, this);
     }
 
-    // TODO sprawdzić czy nie będzie problemu przez brak sprawdzenia czy jest już ustawiona jakaś rola
     // Asocjacja Osoba ◆1---1 Rola Systemowa
     public void setRolaSystemowa(RolaSystemowa rolaSystemowa) throws Exception{
         if(wszystkieRole.contains(rolaSystemowa)){

@@ -16,7 +16,7 @@ public class Faktura implements Serializable {
         KARTA, GOTOWKA, PRZELEW;
     }
 
-    private String numer; //{unique} TODO
+    private String numer;
     private MetodaPlatnosci metodaPlatnosci;
     private List<Pozycja> pozycje = new ArrayList<>();
 
@@ -33,7 +33,6 @@ public class Faktura implements Serializable {
         this.metodaPlatnosci = metodaPlatnosci;
         this.pozycje = pozycje;
         this.wystawca = wystawca;
-        // TODO: ksiegowa nie moze byc null
         this.ksiegowa = ksiegowa;
         ksiegowa.addFaktura(this);
 

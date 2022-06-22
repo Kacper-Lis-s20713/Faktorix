@@ -12,7 +12,7 @@ import java.util.Set;
 public class Pracownik implements Serializable {
     private String imie;
     private String nazwisko;
-    private String pesel; // TODO {unique}
+    private String pesel;
     private double premia = 0;
     private Firma firma;
 
@@ -102,7 +102,6 @@ public class Pracownik implements Serializable {
         this.pesel = pesel;
     }
 
-    // TODO zarządzanie premią, nie może być mniejsza niż zero
     public double getPremia() {
         return premia;
     }

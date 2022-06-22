@@ -38,7 +38,6 @@ public class Umowa implements Serializable {
         return umowa;
     }
 
-    // TODO zastanowić się czy usuwanie tylko z poziomu klasy Pracownik to dobre rozwiązanie
     public void usunPracownika(){
         this.pracownik = null;
         ekstensja.remove(this);

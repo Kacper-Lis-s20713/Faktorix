@@ -29,7 +29,7 @@ public class GUI extends Application {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-//        Ksiegowa.RodzajKsiegowej[] rodzajKsiegowej = {Ksiegowa.RodzajKsiegowej.ZWYKLA, Ksiegowa.RodzajKsiegowej.KADROWA};
+        Ksiegowa.RodzajKsiegowej[] rodzajKsiegowej = {Ksiegowa.RodzajKsiegowej.ZWYKLA, Ksiegowa.RodzajKsiegowej.KADROWA};
 //        Ksiegowa ksiegowa1 = new Ksiegowa("Anna1", "pass", List.of(rodzajKsiegowej));
 //        Ksiegowa ksiegowa2 = new Ksiegowa("Basia1", "haslo_basia", List.of(rodzajKsiegowej));
 //        Ksiegowa ksiegowa3 = new Ksiegowa("Gosia", "haslo_gosia", Arrays.asList(Ksiegowa.RodzajKsiegowej.KADROWA));
