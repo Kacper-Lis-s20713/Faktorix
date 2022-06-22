@@ -46,7 +46,6 @@ public class LoginScreenController{
             root = loader.load();
             WyborFirmyController wyborFirmyController = loader.getController();
             wyborFirmyController.zaloguj(wybranaKsiegowa);
-//            root = FXMLLoader.load(getClass().getResource("WyborFirmy.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

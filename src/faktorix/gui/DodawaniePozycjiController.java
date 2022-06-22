@@ -70,7 +70,7 @@ public class DodawaniePozycjiController {
         stage.show();
     }
 
-    public void dodaj(ActionEvent event) throws IOException {
+    public void dodaj(ActionEvent event){
         // Weryfikacja danych i wyświetlanie błędów
         error.setText(" ");
         try{

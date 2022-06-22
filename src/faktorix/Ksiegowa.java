@@ -9,13 +9,15 @@ public class Ksiegowa extends Osoba{
         ZWYKLA, KADROWA;
     }
 
-    private List<RodzajKsiegowej> rodzajKsiegowej; // TODO: [1..2] co najmniej jeden rodzaj księgowej [zwykla, zwykla-kadrowa, kadrowa]
+    private List<RodzajKsiegowej> rodzajKsiegowej;
     private List<Faktura> faktury = new ArrayList<>();
     private List<ObslugaFirmy> obslugiFirmy = new ArrayList<>();
 
-    // TODO nie może być sytuacji w której lista rodzajów księgowej jest pusta
     public Ksiegowa(String login, String haslo, List<RodzajKsiegowej> rodzajKsiegowej) throws Exception {
         super(login, haslo);
+        if(rodzajKsiegowej.isEmpty()){
+            throw new Exception("Księgowa musi mieć swój rodzaj");
+        }
         this.rodzajKsiegowej = rodzajKsiegowej;
     }
 
@@ -73,6 +75,4 @@ public class Ksiegowa extends Osoba{
     public String toString() {
         return this.getLogin();
     }
-
-    // TODO: Tutaj dużo method (biznesowych)
 }

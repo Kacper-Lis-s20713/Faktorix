@@ -16,11 +16,6 @@ public class Pozycja implements Serializable {
         this.brutto = netto.multiply(new BigDecimal(1.0 + stawkaVAT));
     }
 
-//    public void wyliczNetto(){
-//        BigDecimal vat = new BigDecimal(1.0+stawkaVAT);
-//        netto = brutto.divide(vat);
-//    }
-
     public String getNazwa() {
         return nazwa;
     }

@@ -13,13 +13,6 @@ import static javafx.application.Application.launch;
 //GUI method
 public class Main{
     public static void main(String[] args) {
-
-
-        Pracownik pracownik1 = new Pracownik("Jan", "Kowalski", "10192910212");
-        Pracownik pracownik2 = new Pracownik("Jan", "Kowalski", "10192910212");
-
-
-
         final String extentFile = "ekstensja.ser";
 
 //        try {
