@@ -29,7 +29,7 @@ public class DodawanieFakturyController {
     private Parent root;
 
     @FXML
-    private VBox wystawca;
+    private ComboBox<Firma> wystawca;
     @FXML
     private TextField numer;
     @FXML
@@ -54,6 +54,8 @@ public class DodawanieFakturyController {
     private TableColumn<Pozycja, String> netto;
     @FXML
     private TableColumn<Pozycja, String> brutto;
+    @FXML
+    private Label errorMessage;
 
     private Firma firma;
     private Ksiegowa ksiegowa;
@@ -63,6 +65,7 @@ public class DodawanieFakturyController {
     private Firma firmaWystawca;
     private ObservableList<Pozycja> danePozycje;
     private List<Pozycja> pozycje;
+    private ObservableList<Firma> firmy;
 
     public void initialize(){
         danePozycje = FXCollections.observableArrayList();
@@ -81,6 +84,10 @@ public class DodawanieFakturyController {
             danePozycje.addAll(pozycje);
             tabelaPozycji.setItems(danePozycje);
         }
+
+        firmy = FXCollections.observableArrayList();
+        firmy.addAll(Firma.getEkstensja());
+        wystawca.setItems(firmy);
     }
 
     public void dodajPozycje(ActionEvent event) throws IOException{
@@ -106,13 +113,28 @@ public class DodawanieFakturyController {
         numerFaktury = numer.getCharacters().toString();
         wystawienieData = dataWystawienia.getValue();
         platnoscData = dataPlatnosci.getValue();
+        firmaWystawca = wystawca.getSelectionModel().getSelectedItem();
     }
 
-    public void dodajFakture(ActionEvent event) {
-        // TODO sprawdź prawidłowość danych i wyświetl informację o pomyślnym dodaniu faktury
+    public void dodajFakture(ActionEvent event) throws IOException {
         numerFaktury = numer.getCharacters().toString();
         wystawienieData = dataWystawienia.getValue();
         platnoscData = dataPlatnosci.getValue();
+        firmaWystawca = wystawca.getSelectionModel().getSelectedItem();
+        if(numerFaktury == null || numerFaktury.isEmpty()){
+            errorMessage.setText("Musisz podać numer faktury");
+        } else if (wystawienieData == null) {
+            errorMessage.setText("Musisz podać datę wystawienia faktury");
+        } else if (platnoscData == null){
+            errorMessage.setText("Musisz podać datę płatności faktury");
+        }else if (pozycje.isEmpty()){
+            errorMessage.setText("Faktura musi posiadać pozycje");
+        } else if (firmaWystawca == null) {
+            errorMessage.setText("Musisz wybrać wystawcę faktury");
+        } else{
+            Faktura nowaFaktur = new Faktura(numerFaktury, Faktura.MetodaPlatnosci.KARTA, ksiegowa, firma, pozycje, firmaWystawca);
+            this.anuluj(event);
+        }
     }
 
     public void anuluj(ActionEvent event) throws IOException {
@@ -127,7 +149,6 @@ public class DodawanieFakturyController {
     }
 
     public void usunPozycje(ActionEvent event) {
-        // TODO usunięcie pozycji z faktury i aktualizacja tabeli pozycji
         Pozycja pozycjaDoUsuniecia = tabelaPozycji.getSelectionModel().getSelectedItem();
         if(pozycjaDoUsuniecia != null){
             pozycje.remove(pozycjaDoUsuniecia);
@@ -158,5 +179,7 @@ public class DodawanieFakturyController {
         danePozycje.clear();
         danePozycje.addAll(pozycje);
         tabelaPozycji.setItems(danePozycje);
+
+        wystawca.getSelectionModel().select(firmaWystawca);
     }
 }

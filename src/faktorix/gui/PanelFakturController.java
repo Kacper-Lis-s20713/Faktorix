@@ -19,7 +19,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -44,8 +43,6 @@ public class PanelFakturController {
     @FXML
     private Button wroc;
     @FXML
-    private Button duplikuj;
-    @FXML
     private Button usun;
     @FXML
     private Button dodaj;
@@ -58,8 +55,6 @@ public class PanelFakturController {
         System.out.println("Wyswietlono panel faktur");
         daneFaktury = FXCollections.observableArrayList();
 
-
-        // TODO poprawa wyświetlania kwoty
         numer.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getNumer()));
         wystawca.setCellValueFactory(cellData ->
@@ -81,12 +76,14 @@ public class PanelFakturController {
         stage.show();
     }
 
-    public void duplikuj(ActionEvent event) {
-        // TODO otwórz okienko dodawania faktury z danymi wybranej faktury
-    }
-
     public void usun(ActionEvent event) {
-        // TODO usun fakture i wyswietl komunikat o pomyslnym usunieciu oraz aktualizacja tabeli. Usuwanie musi być trwałe czyli usuwać z ekstensji.
+        Faktura fakturaDoUsniecia = tabelaFaktur.getSelectionModel().getSelectedItem();
+        if(fakturaDoUsniecia != null && daneFaktury.contains(fakturaDoUsniecia)){
+            fakturaDoUsniecia.usunFaktura();
+            daneFaktury.clear();
+            daneFaktury.addAll(firma.getFaktury());
+            tabelaFaktur.setItems(daneFaktury);
+        }
     }
 
     public void dodaj(ActionEvent event) throws IOException{
@@ -104,6 +101,7 @@ public class PanelFakturController {
         this.ksiegowa = ksiegowa;
         this.firma = wybranaFirma;
         firmaNapis.setText("Faktury firmy: " + wybranaFirma.getDaneFirmy().getNazwaFirmy());
+        daneFaktury.clear();
         daneFaktury.addAll(firma.getFaktury());
         tabelaFaktur.setItems(daneFaktury);
     }

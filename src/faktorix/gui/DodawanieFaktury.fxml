@@ -42,12 +42,12 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox fx:id="wystawca" layoutX="164.0" layoutY="65.0" prefHeight="200.0" prefWidth="400.0" spacing="30.0">
+      <VBox layoutX="164.0" layoutY="65.0" prefHeight="200.0" prefWidth="400.0" spacing="30.0">
          <children>
             <TextField fx:id="numer" />
             <DatePicker fx:id="dataWystawienia" />
             <DatePicker fx:id="dataPlatnosci" layoutX="10.0" layoutY="35.0" />
-            <ComboBox prefWidth="250.0" />
+            <ComboBox fx:id="wystawca" prefWidth="250.0" promptText="Wybierz wystawcę" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -76,5 +76,10 @@
       </Button>
       <Button fx:id="dodajFakture" layoutX="498.0" layoutY="711.0" mnemonicParsing="false" onAction="#dodajFakture" text="Dodaj fakturę" />
       <Button fx:id="anuluj" layoutX="419.0" layoutY="711.0" mnemonicParsing="false" onAction="#anuluj" text="Anuluj" />
+      <Label fx:id="errorMessage" alignment="TOP_LEFT" layoutX="164.0" layoutY="630.0" prefHeight="65.0" prefWidth="400.0" textFill="RED" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

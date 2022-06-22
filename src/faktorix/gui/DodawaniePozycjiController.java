@@ -71,7 +71,6 @@ public class DodawaniePozycjiController {
     }
 
     public void dodaj(ActionEvent event) throws IOException {
-        // TODO można jescze nad tym coś pomyśleć
         // Weryfikacja danych i wyświetlanie błędów
         error.setText(" ");
         try{

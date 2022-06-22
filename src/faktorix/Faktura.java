@@ -58,13 +58,18 @@ public class Faktura implements Serializable {
         firma = nowafirma;
         firma.addFaktura(this);
     }
-    // TODO sprawdzić, czy takie usuwanie wystarczy - usuwanie z ekstensji
     public void usunKsiegowa(){
         ksiegowa = null;
     }
 
     public void usunFirma(){
         firma = null;
+    }
+
+    public void usunFaktura(){
+        firma.usunFakture(this);
+        ksiegowa.usunFakture(this);
+        ekstensja.remove(this.numer);
     }
 
     // Zarządzanie ekstensją
